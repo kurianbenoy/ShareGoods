@@ -20,10 +20,9 @@ class Product(models.Model):
     choice = (
     ('GA','Gardening'),
     ('CO','Construction'),
-    ('MA','Maintenacne')
-    ('TA','Travel'),
-    )
-    category        = models.CharField(choices = choice )
+    ('MA','Maintenacne'),
+    ('TA','Travel'))
+    category        = models.CharField( max_length=2,choices =  choice )
     # user, duration (preferred),max_duration
 
     def get_absolute_url(self):
@@ -53,14 +52,14 @@ class ProductCondition(models.Model):
         purchase_date = models.DateTimeField(default=False)
         additional_info = models.TextField()
 
-# class Category(models.Model):
-#     category = models.CharField(max_length=100)
-#
-#     def __str__(self):
-#         return self.category
-#
-# class Subcategory(models.Model):
-#     subcategory = models.CharField(max_length=100)
-#
-#     def __str__(self):
-#         return self.subcategory
+class Category(models.Model):
+    category = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.category
+
+class Subcategory(models.Model):
+    subcategory = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.subcategory
