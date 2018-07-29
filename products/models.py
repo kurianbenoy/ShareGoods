@@ -16,13 +16,15 @@ class Product(models.Model):
     active          = models.BooleanField(default=True)
     timestamp       = models.DateTimeField(auto_now=True)
     max_duration    = models.IntegerField(default=0)
-    duration        = models.IntegerField()
     choice = (
     ('GA','Gardening'),
     ('CO','Construction'),
     ('MA','Maintenacne'),
     ('TA','Travel'))
-    category        = models.CharField( max_length=2,choices =  choice )
+    category = models.ForeignKey('Category',
+                        on_delete=models.CASCADE)
+    subcategory = models.ForeignKey('Subcategory',
+                        on_delete=models.CASCADE)
     # user, duration (preferred),max_duration
 
     def get_absolute_url(self):
@@ -59,6 +61,8 @@ class Category(models.Model):
         return self.category
 
 class Subcategory(models.Model):
+    category = models.ForeignKey('Category',
+                        on_delete=models.CASCADE)
     subcategory = models.CharField(max_length=100)
 
     def __str__(self):

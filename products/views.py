@@ -34,5 +34,5 @@ class ProductListAPI(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('title','category__category','description')
+    search_fields = ('title','category__category','description','subcategory__subcategory',)
     # filter_class = ProductFilter
