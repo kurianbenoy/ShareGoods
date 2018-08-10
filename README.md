@@ -7,5 +7,6 @@ project more depending on intrest around this platform.This project was created 
 
 **INSTALLATION**
 
-- pip install -U pipenv
-- pipenv install
+` pip install -U pipenv`
+
+` pipenv install`
